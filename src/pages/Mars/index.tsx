@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import { Feather, MaterialIcons } from "@expo/vector-icons";
 import {
   ScrollView,
@@ -13,7 +13,8 @@ import * as Animatable from "react-native-animatable";
 import Accordion from "react-native-collapsible/Accordion";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import Svg, { Rect } from "react-native-svg";
-import AsyncStorage from "@react-native-community/async-storage";
+
+import { usePlanet } from "../../hooks/planet";
 
 import Planet from "../../components/Planet";
 import CONTENT from "../../res/sections";
@@ -33,10 +34,11 @@ const MarsPage = () => {
   const navigation = useNavigation();
   const planetParms = useRoute();
   const { planet } = planetParms.params as IParams;
+  const { updatePlanet } = usePlanet();
   const { name, description, icon, isFavorite } = planet;
   const [favorite, setFavorite] = useState(isFavorite);
 
-  const [dimensions, setDimensions] = useState({ window, screen });
+  const [dimensions] = useState({ screen });
   const [activeSections, setActiveSections] = useState<number[]>([]);
 
   const setSections = (sections) => {
@@ -70,24 +72,10 @@ const MarsPage = () => {
     );
   };
 
-  const handleFavorite = useCallback(async (planet) => {
-    const data = await AsyncStorage.getItem("@solarsystem:planets");
-
-    if (data) {
-      const planets = JSON.parse(data);
-
-      const index = planets.findIndex(
-        (p) => p.name.toLocaleLowerCase() === planet.name.toLocaleLowerCase()
-      );
-      const selectedPlanet = planets[index];
-      selectedPlanet.isFavorite = !selectedPlanet.isFavorite;
-
-      await AsyncStorage.setItem(
-        "@solarsystem:planets",
-        JSON.stringify(planets)
-      );
-    }
-  }, []);
+  const handleFavorite = () => {
+    setFavorite(!favorite);
+    updatePlanet(planet);
+  };
 
   return (
     <View style={styles.container}>
@@ -117,11 +105,11 @@ const MarsPage = () => {
           <Text style={styles.name}>{name}</Text>
           <View style={styles.icons}>
             {favorite ? (
-              <TouchableOpacity onPress={() => setFavorite(!favorite)}>
+              <TouchableOpacity onPress={handleFavorite}>
                 <MaterialIcons name="bookmark" size={25} color="#FA8F70" />
               </TouchableOpacity>
             ) : (
-              <TouchableOpacity onPress={() => setFavorite(!favorite)}>
+              <TouchableOpacity onPress={handleFavorite}>
                 <Feather name="bookmark" color="#151515" size={25} />
               </TouchableOpacity>
             )}

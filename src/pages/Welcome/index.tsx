@@ -1,27 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
-import AsyncStorage from "@react-native-community/async-storage";
 
 import SolarSystem from "../../components/SolarSystem";
 
-import planets from "../../res/planets";
-
 const Home = () => {
   const navigation = useNavigation();
-
-  useEffect(() => {
-    async function loadStorageData(): Promise<void> {
-      await AsyncStorage.setItem(
-        "@solarsystem:planets",
-        JSON.stringify(planets)
-      );
-    }
-
-    loadStorageData();
-  }, []);
 
   return (
     <View style={styles.wrapper}>
@@ -45,7 +31,7 @@ const Home = () => {
               end={[1, 0]}
             >
               <Text style={styles.buttonText}>Começar agora</Text>
-              <Feather name="arrow-left" color="#FFFFFF" size={24} />
+              <Feather name="arrow-right" color="#FFFFFF" size={24} />
             </LinearGradient>
           </TouchableOpacity>
         </View>

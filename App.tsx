@@ -1,9 +1,10 @@
 import React from "react";
 import { StatusBar } from "react-native";
+import { AppLoading } from "expo";
 
 import Routes from "./src/routes";
+import AppContainer from "./src/hooks";
 
-import { AppLoading } from "expo";
 import {
   useFonts,
   Roboto_400Regular,
@@ -16,10 +17,9 @@ export default function App() {
   if (!fontsLoaded) return <AppLoading />;
 
   return (
-    <>
+    <AppContainer>
       <StatusBar />
-
       <Routes />
-    </>
+    </AppContainer>
   );
 }

@@ -8,11 +8,12 @@ import CategoryItem from "../../components/CategoryItem";
 import PlanetCardSmall from "../../components/PlanetCardSmall";
 import Constellation from "../../components/Constellation";
 
-import planets from "../../res/planets";
 import categories from "../../res/categories";
+import { usePlanet } from "../../hooks/planet";
 
 const Home = () => {
   const navigation = useNavigation();
+  const { planets } = usePlanet();
   const [value, onChangeText] = useState("");
 
   return (
@@ -20,7 +21,7 @@ const Home = () => {
       <Constellation />
       <View style={styles.content}>
         <View style={styles.head}>
-          <Text style={styles.username}>Olá, Ana Cecília</Text>
+          <Text style={styles.username}>Olá, Wallyson</Text>
           <Feather name="settings" size={24} color="#FFFFFF" />
         </View>
 

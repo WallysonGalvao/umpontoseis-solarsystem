@@ -10,17 +10,10 @@ import {
   ScrollView,
 } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import AsyncStorage from "@react-native-community/async-storage";
+import { usePlanet } from "../../hooks/planet";
 
 import PlanetCardMedium from "../../components/PlanetCardMedium";
 import Constellation from "../../components/Constellation";
-
-interface Planet {
-  name: string;
-  description: string;
-  icon: string;
-  isFavorite: boolean;
-}
 
 interface IParams {
   searchPlanet: string;
@@ -28,24 +21,10 @@ interface IParams {
 
 const Search = () => {
   const navigation = useNavigation();
+  const { planets, updatePlanet } = usePlanet();
   const searchParms = useRoute();
   const { searchPlanet } = searchParms.params as IParams;
   const [value, onChangeText] = useState(searchPlanet);
-
-  const [planets, setPlanets] = useState<Planet[]>([]);
-
-  async function loadStorageData(): Promise<void> {
-    const data = await AsyncStorage.getItem("@solarsystem:planets");
-
-    if (data) {
-      const dataParsed: Planet[] = JSON.parse(data);
-      setPlanets(dataParsed);
-    }
-  }
-
-  useEffect(() => {
-    loadStorageData();
-  }, [value]);
 
   const planet = useMemo(() => {
     const toSearch = searchPlanet.toLocaleLowerCase();
@@ -56,17 +35,6 @@ const Search = () => {
     const toSearch = searchPlanet.toLocaleLowerCase();
     return planets.filter((p) => p.name.toLocaleLowerCase() !== toSearch);
   }, [planets]);
-
-  const handleFavorite = async (planet: Planet) => {
-    const index = planets.findIndex(
-      (p) => p.name.toLocaleLowerCase() === planet.name.toLocaleLowerCase()
-    );
-    const selectedPlanet = planets[index];
-    selectedPlanet.isFavorite = !selectedPlanet.isFavorite;
-
-    await AsyncStorage.setItem("@solarsystem:planets", JSON.stringify(planets));
-    loadStorageData();
-  };
 
   return (
     <View style={styles.wrapper}>
@@ -94,7 +62,7 @@ const Search = () => {
             style={{ color: "#fff" }}
             value={value}
             onChangeText={(text) => onChangeText(text)}
-            onSubmitEditing={() => loadStorageData()}
+            onSubmitEditing={() => {}}
           />
         </View>
 
@@ -105,7 +73,7 @@ const Search = () => {
               description={planet.description}
               icon={planet.icon}
               isFavorite={planet.isFavorite}
-              onPress={() => handleFavorite(planet)}
+              onPress={() => updatePlanet(planet)}
             />
           )}
 
@@ -118,7 +86,7 @@ const Search = () => {
               description={planet.description}
               icon={planet.icon}
               isFavorite={planet.isFavorite}
-              onPress={() => handleFavorite(planet)}
+              onPress={() => updatePlanet(planet)}
             />
           ))}
         </ScrollView>
