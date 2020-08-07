@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import Constants from "expo-constants";
-import { Feather } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
-import { StyleSheet, View, Text, ScrollView, TextInput } from "react-native";
+import React, { useState } from 'react';
+import Constants from 'expo-constants';
+import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, View, Text, ScrollView, TextInput } from 'react-native';
 
-import CategoryItem from "../../components/CategoryItem";
-import PlanetCardSmall from "../../components/PlanetCardSmall";
-import Constellation from "../../components/Constellation";
+import CategoryItem from '../../components/CategoryItem';
+import PlanetCardSmall from '../../components/PlanetCardSmall';
+import Constellation from '../../components/Constellation';
 
-import categories from "../../res/categories";
-import { usePlanet } from "../../hooks/planet";
+import categories from '../../res/categories';
+import { usePlanet } from '../../hooks/planet';
 
 const Home = () => {
   const navigation = useNavigation();
   const { planets } = usePlanet();
-  const [value, onChangeText] = useState("");
+  const [value, onChangeText] = useState('');
 
   return (
     <View style={styles.wrapper}>
@@ -35,12 +35,12 @@ const Home = () => {
             style={{ paddingRight: 10 }}
           />
           <TextInput
-            style={{ color: "#fff" }}
+            style={{ color: '#fff' }}
             placeholder="Procure planetas, asteroides, estrelas..."
-            onChangeText={(text) => onChangeText(text)}
+            onChangeText={text => onChangeText(text)}
             onSubmitEditing={() =>
-              navigation.navigate("Buscar", {
-                screen: "Search",
+              navigation.navigate('Buscar', {
+                screen: 'Search',
                 params: { searchPlanet: value },
               })
             }
@@ -80,17 +80,17 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   inputContainer: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     padding: 10,
     borderRadius: 8,
     marginTop: 40,
-    backgroundColor: "#151515",
+    backgroundColor: '#151515',
   },
   content: {
     paddingHorizontal: 15,
     paddingTop: 20 + Constants.statusBarHeight,
-    position: "absolute",
+    position: 'absolute',
     top: 0,
     left: 0,
     right: 0,
@@ -98,30 +98,30 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   head: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   username: {
-    fontFamily: "Roboto_400Regular",
+    fontFamily: 'Roboto_400Regular',
     fontSize: 32,
-    fontWeight: "bold",
-    color: "#FFFFFF",
+    fontWeight: 'bold',
+    color: '#FFFFFF',
   },
   subText: {
-    fontFamily: "Roboto_400Regular",
+    fontFamily: 'Roboto_400Regular',
     fontSize: 16,
-    color: "#FFFFFF",
+    color: '#FFFFFF',
   },
   sectionTitle: {
-    fontFamily: "Roboto_400Regular",
+    fontFamily: 'Roboto_400Regular',
     fontSize: 16,
-    color: "#FFFFFF",
+    color: '#FFFFFF',
     marginTop: 30,
     marginBottom: 20,
   },
   sections: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });

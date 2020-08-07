@@ -1,10 +1,10 @@
-import React from "react";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
-import { Feather } from "@expo/vector-icons";
-import { LinearGradient } from "expo-linear-gradient";
-import { useNavigation } from "@react-navigation/native";
+import React from 'react';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { Feather } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
 
-import SolarSystem from "../../components/SolarSystem";
+import SolarSystem from '../../components/SolarSystem';
 
 const Home = () => {
   const navigation = useNavigation();
@@ -21,12 +21,12 @@ const Home = () => {
         <View style={styles.buttonContainer}>
           <Text style={styles.textReady}>Pronto para a decolagem?</Text>
           <TouchableOpacity
-            onPress={() => navigation.navigate("Homepage")}
+            onPress={() => navigation.navigate('Homepage')}
             activeOpacity={0.6}
           >
             <LinearGradient
               style={styles.button}
-              colors={["#EF5F53", "#FA8F70"]}
+              colors={['#EF5F53', '#FA8F70']}
               start={[0, 1]}
               end={[1, 0]}
             >
@@ -47,43 +47,43 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   content: {
-    position: "absolute",
+    position: 'absolute',
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     zIndex: 1,
   },
   text: {
-    fontFamily: "Roboto_400Regular",
+    fontFamily: 'Roboto_400Regular',
     fontSize: 16,
-    color: "#FFFFFF",
+    color: '#FFFFFF',
     opacity: 0.65,
   },
   subText: {
-    width: "90%",
-    fontFamily: "Roboto_400Regular",
+    width: '90%',
+    fontFamily: 'Roboto_400Regular',
     fontSize: 32,
-    fontWeight: "bold",
-    textAlign: "center",
-    color: "#FFFFFF",
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#FFFFFF',
   },
   textReady: {
-    fontFamily: "Roboto_400Regular",
+    fontFamily: 'Roboto_400Regular',
     fontSize: 14,
-    textAlign: "center",
-    color: "#FFFFFF",
+    textAlign: 'center',
+    color: '#FFFFFF',
   },
   buttonContainer: {
     top: 150,
   },
   button: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignContent: "center",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignItems: 'center',
     width: 206,
     height: 51,
     borderRadius: 8,
@@ -91,10 +91,10 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   buttonText: {
-    fontFamily: "Roboto_400Regular",
+    fontFamily: 'Roboto_400Regular',
     fontSize: 16,
-    fontWeight: "bold",
-    color: "#FFFFFF",
+    fontWeight: 'bold',
+    color: '#FFFFFF',
 
     marginRight: 10,
   },
