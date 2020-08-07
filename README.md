@@ -39,7 +39,7 @@
 
 ## 💻 Projeto
 
-Este é o terceiro projeto da **[umpontoseis](https://umpontoseis.com/)**, a ideia foi idealizada pelo Jonas Milan durante o Design in <Code \/\> promovido pela umpontoseis. A ideia do aplicativo é trazer informações do nosso sistema solar em um desing extremamente bonito.
+Este é o terceiro projeto da **[umpontoseis](https://umpontoseis.com/)**, a ideia foi idealizada pelo [Jonas Milan](https://www.linkedin.com/in/jonas-milan-8b68b3b2/) durante o Design in <Code \/\> promovido pela umpontoseis. A ideia do aplicativo é trazer informações do nosso sistema solar em um desing extremamente bonito.
 
 ## 🎨 Layout
 
