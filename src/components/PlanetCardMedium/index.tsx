@@ -1,9 +1,9 @@
-import React from "react";
-import { Feather, MaterialIcons } from "@expo/vector-icons";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import React from 'react';
+import { Feather, MaterialIcons } from '@expo/vector-icons';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-import Planet from "../../components/Planet";
+import Planet from '../Planet';
 
 interface Props {
   icon: string;
@@ -23,7 +23,7 @@ const PlanetCardMedium: React.FC<Props> = ({
   const navigation = useNavigation();
 
   const handlePress = (planet: any) => {
-    navigation.navigate("Mars", { planet });
+    navigation.navigate('PlanetDetail', { planet });
   };
 
   return (
@@ -77,9 +77,9 @@ export default PlanetCardMedium;
 const styles = StyleSheet.create({
   planetCard: {
     height: 170,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    backgroundColor: "#151515",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: '#151515',
     borderRadius: 8,
     marginBottom: 15,
   },
@@ -89,33 +89,33 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
   },
   bookmarkContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     marginRight: 10,
   },
   name: {
-    fontFamily: "Roboto_400Regular",
+    fontFamily: 'Roboto_400Regular',
     fontSize: 32,
-    fontWeight: "bold",
-    color: "#FFFFFF",
+    fontWeight: 'bold',
+    color: '#FFFFFF',
   },
   desciption: {
-    fontFamily: "Roboto_400Regular",
+    fontFamily: 'Roboto_400Regular',
     fontSize: 14,
-    color: "#FFFFFF",
+    color: '#FFFFFF',
     opacity: 0.65,
   },
   button: {
     width: 150,
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     marginTop: 10,
   },
   continuosText: {
-    fontFamily: "Roboto_400Regular",
+    fontFamily: 'Roboto_400Regular',
     fontSize: 14,
-    color: "#FFFFFF",
+    color: '#FFFFFF',
     marginRight: 10,
   },
 });

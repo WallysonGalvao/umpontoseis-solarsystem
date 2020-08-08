@@ -2,8 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
-import Planet from '../../components/Planet';
-import Icon from '../Icon';
+import Planet from '../Planet';
 
 interface Props {
   icon: string;
@@ -13,8 +12,7 @@ interface Props {
 const PlanetCardSmall: React.FC<Props> = ({ name, icon }) => {
   return (
     <View style={styles.planetCard}>
-      {/* <Planet name={icon} type="half" dimension={120} /> */}
-      <Icon name={icon} />
+      <Planet name={icon} type="half" dimension={120} />
       <View style={styles.button}>
         <Text style={styles.planetName}>{name}</Text>
         <Feather name="arrow-right" size={20} color="#FA8F70" />

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Feather, MaterialIcons } from "@expo/vector-icons";
+import React, { useState } from 'react';
+import { Feather, MaterialIcons } from '@expo/vector-icons';
 import {
   ScrollView,
   StyleSheet,
@@ -7,19 +7,20 @@ import {
   View,
   TouchableOpacity,
   Dimensions,
-} from "react-native";
-import Constants from "expo-constants";
-import * as Animatable from "react-native-animatable";
-import Accordion from "react-native-collapsible/Accordion";
-import { useNavigation, useRoute } from "@react-navigation/native";
-import Svg, { Rect } from "react-native-svg";
+} from 'react-native';
+import Constants from 'expo-constants';
+import * as Animatable from 'react-native-animatable';
+import Accordion from 'react-native-collapsible/Accordion';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import Svg, { Rect } from 'react-native-svg';
 
-import { usePlanet } from "../../hooks/planet";
+import { usePlanet } from '../../hooks/planet';
 
-import Planet from "../../components/Planet";
-import CONTENT from "../../res/sections";
+import Planet from '../../components/Planet';
 
-const screen = Dimensions.get("screen");
+import CONTENT from '../../res/sections';
+
+const screen = Dimensions.get('screen');
 
 interface IParams {
   planet: {
@@ -41,7 +42,7 @@ const MarsPage = () => {
   const [dimensions] = useState({ screen });
   const [activeSections, setActiveSections] = useState<number[]>([]);
 
-  const setSections = (sections) => {
+  const setSections = sections => {
     setActiveSections(sections.includes(undefined) ? [] : sections);
   };
 
@@ -65,7 +66,7 @@ const MarsPage = () => {
         style={[styles.content, isActive ? styles.active : styles.inactive]}
         transition="backgroundColor"
       >
-        <Animatable.Text animation={isActive ? "bounceIn" : undefined}>
+        <Animatable.Text animation={isActive ? 'bounceIn' : undefined}>
           {section.content}
         </Animatable.Text>
       </Animatable.View>
@@ -140,12 +141,12 @@ export default MarsPage;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: '#FFFFFF',
   },
   body: {
     paddingHorizontal: 15,
     paddingTop: 20 + Constants.statusBarHeight,
-    position: "absolute",
+    position: 'absolute',
     top: 0,
     left: 0,
     right: 0,
@@ -153,62 +154,62 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   head: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   planet: {
-    alignSelf: "center",
+    alignSelf: 'center',
   },
   name: {
-    fontFamily: "Roboto_400Regular",
+    fontFamily: 'Roboto_400Regular',
     fontSize: 32,
-    fontWeight: "bold",
-    color: "#151515",
+    fontWeight: 'bold',
+    color: '#151515',
   },
   icons: {
     width: 60,
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   nameContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   title: {
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: 22,
-    fontWeight: "300",
+    fontWeight: '300',
     marginBottom: 20,
   },
   description: {
     marginTop: 15,
-    fontFamily: "Roboto_400Regular",
+    fontFamily: 'Roboto_400Regular',
     fontSize: 14,
-    color: "#151515",
+    color: '#151515',
   },
   header: {
-    flexDirection: "row",
+    flexDirection: 'row',
     padding: 10,
-    borderBottomColor: "#E8E8E8",
+    borderBottomColor: '#E8E8E8',
     borderBottomWidth: 0.5,
   },
   headerText: {
-    fontFamily: "Roboto_400Regular",
+    fontFamily: 'Roboto_400Regular',
     fontSize: 16,
-    fontWeight: "bold",
-    color: "#151515",
+    fontWeight: 'bold',
+    color: '#151515',
     marginLeft: 10,
   },
   content: {
     padding: 20,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: '#FFFFFF',
   },
   active: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: '#FFFFFF',
   },
   inactive: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: '#FFFFFF',
   },
 });

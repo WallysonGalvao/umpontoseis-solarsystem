@@ -39,7 +39,7 @@ const Home = () => {
             placeholder="Procure planetas, asteroides, estrelas..."
             onChangeText={text => onChangeText(text)}
             onSubmitEditing={() =>
-              navigation.navigate('Buscar', {
+              navigation.navigate('SearchPage', {
                 screen: 'Search',
                 params: { searchPlanet: value },
               })

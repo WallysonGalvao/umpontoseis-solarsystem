@@ -1,30 +1,25 @@
-import React from "react";
-import { Feather } from "@expo/vector-icons";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import React from 'react';
+import { Feather } from '@expo/vector-icons';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import Welcome from "./pages/Welcome";
+import Welcome from './pages/Welcome';
 
-import Homepage from "./pages/Homepage";
-import Search from "./pages/Search";
-import Mars from "./pages/Mars";
+import Homepage from './pages/Homepage';
+import Search from './pages/Search';
+import PlanetDetail from './pages/PlanetDetail';
+import Bookmark from './pages/Bookmark';
+import Gallery from './pages/Gallery';
 
 const AppStack = createStackNavigator();
 const AppTab = createBottomTabNavigator();
 
 const MarsPage = () => {
   return (
-    <AppStack.Navigator
-      headerMode="none"
-      screenOptions={{
-        cardStyle: {
-          backgroundColor: "#f0f0f5",
-        },
-      }}
-    >
+    <AppStack.Navigator headerMode="none">
       <AppStack.Screen name="Search" component={Search} />
-      <AppStack.Screen name="Mars" component={Mars} />
+      <AppStack.Screen name="PlanetDetail" component={PlanetDetail} />
     </AppStack.Navigator>
   );
 };
@@ -33,9 +28,9 @@ const BottomTabNavigator = () => {
   return (
     <AppTab.Navigator
       tabBarOptions={{
-        activeTintColor: "#FFF",
+        activeTintColor: '#FFF',
         style: {
-          backgroundColor: "#151515",
+          backgroundColor: '#151515',
           /* borderTopEndRadius: 16,
           borderTopLeftRadius: 16, */
           height: 55,
@@ -46,18 +41,20 @@ const BottomTabNavigator = () => {
       }}
     >
       <AppTab.Screen
-        name="Início"
+        name="Homepage"
         component={Homepage}
         options={{
+          tabBarLabel: 'Início',
           tabBarIcon: ({ color, size }) => (
             <Feather name="home" color={color} size={size} style={{ top: 5 }} />
           ),
         }}
       />
       <AppTab.Screen
-        name="Buscar"
+        name="SearchPage"
         component={MarsPage}
         options={{
+          tabBarLabel: 'Buscar',
           tabBarIcon: ({ color, size }) => (
             <Feather
               name="search"
@@ -70,9 +67,10 @@ const BottomTabNavigator = () => {
       />
 
       <AppTab.Screen
-        name="Salvos"
-        component={Homepage}
+        name="Bookmark"
+        component={Bookmark}
         options={{
+          tabBarLabel: 'Salvos',
           tabBarIcon: ({ color, size }) => (
             <Feather
               name="bookmark"
@@ -84,9 +82,10 @@ const BottomTabNavigator = () => {
         }}
       />
       <AppTab.Screen
-        name="Galeria"
-        component={Homepage}
+        name="Gallery"
+        component={Gallery}
         options={{
+          tabBarLabel: 'Galeria',
           tabBarIcon: ({ color, size }) => (
             <Feather
               name="image"
@@ -104,17 +103,9 @@ const BottomTabNavigator = () => {
 const Routes = () => {
   return (
     <NavigationContainer>
-      <AppStack.Navigator
-        headerMode="none"
-        screenOptions={{
-          cardStyle: {
-            backgroundColor: "#f0f0f5",
-          },
-        }}
-      >
+      <AppStack.Navigator headerMode="none">
         <AppStack.Screen name="Welcome" component={Welcome} />
         <AppStack.Screen name="Homepage" component={BottomTabNavigator} />
-        <AppStack.Screen name="Mars" component={Mars} />
       </AppStack.Navigator>
     </NavigationContainer>
   );
